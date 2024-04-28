@@ -43,8 +43,11 @@ a,
 img,
 span,
 button,
-ion-icon {
+ion-icon,
+input {
   display: block;
+  min-width: 44px;
+  min-height: 44px;
 }
 
 a {
