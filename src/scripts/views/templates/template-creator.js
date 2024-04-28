@@ -6,8 +6,8 @@ const createRestaurantItemTemplate = (restaurant) => `<div class="location">
 <h3>Kota. ${restaurant.city}</h3>
 </div>
 <div class="picture">
-<picture >
-  <source media="(max-width: 600px)" srcset="${`${CONFIG.BASE_IMAGE_URL}/small/${restaurant.pictureId}`}" type="image/jpeg" >
+<picture>
+  <source media="(max-width: 600px)" data-srcset="${`${CONFIG.BASE_IMAGE_URL}/small/${restaurant.pictureId}`}" type="image/jpeg" >
   <img class="lazyload" crossorigin="anonymous" data-src="${`${CONFIG.BASE_IMAGE_URL}/medium/${restaurant.pictureId}`}" alt="">
 </picture>
 </div>
@@ -45,7 +45,7 @@ const createDetailItemTemplate = (restaurant) => {
     <h1 class="restaurant__title">${restaurant.name}</h1>
     <section class="detail_content">
     <picture>
-      <source media="(max-width: 600px)" srcset="${`${CONFIG.BASE_IMAGE_URL}/small/${restaurant.pictureId}`}" type="image/jpeg" >
+      <source media="(max-width: 600px)" data-srcset="${`${CONFIG.BASE_IMAGE_URL}/small/${restaurant.pictureId}`}" type="image/jpeg" >
       <img class="lazyload" crossorigin="anonymous" data-src="${`${CONFIG.BASE_IMAGE_URL}/large/${restaurant.pictureId}`}" alt="">
     </picture>
       <div class="restaurant__detail">
