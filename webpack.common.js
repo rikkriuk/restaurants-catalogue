@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
@@ -45,17 +44,24 @@ module.exports = {
       swDest: './sw.bundle.js',
       runtimeCaching: [
         {
-          urlPattern: ({ url }) => url.href.startsWith('https://api.themoviedb.org/3/'),
+          urlPattern: /^https:\/\/restaurant-api\.dicoding\.dev\/.*$/,
           handler: 'StaleWhileRevalidate',
           options: {
-            cacheName: 'restaurant-db-api',
+            cacheName: 'restaurant-data-cache',
           },
         },
         {
-          urlPattern: ({ url }) => url.href.startsWith('https://image.tmdb.org/t/p/w500/'),
+          urlPattern: /^https:\/\/restaurant-api\.dicoding\.dev\/images\/small\/.*$/,
           handler: 'StaleWhileRevalidate',
           options: {
-            cacheName: 'restaurant-image-api',
+            cacheName: 'restaurant-small-images-cache',
+          },
+        },
+        {
+          urlPattern: /^https:\/\/restaurant-api\.dicoding\.dev\/images\/medium\/.*$/,
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'restaurant-medium-images-cache',
           },
         },
       ],
